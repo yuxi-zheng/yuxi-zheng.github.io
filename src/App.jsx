@@ -45,16 +45,6 @@ const publications = [
     abstract:
       "Hash-based succinct non-interactive arguments are widely used because they are efficient, easy to deploy, and believed to have post-quantum security. This work studies hash-based succinct non-interactive reductions and proves security in the quantum random oracle model under a natural post-quantum analogue of state-restoration security. It also develops a modular framework for proving security of the extended BCS transformation via quantum extraction properties for vector commitments.",
     links: [{ label: "arXiv", href: "https://eprint.iacr.org/2025/2166" }],
-    talks: [
-      {
-        venue: "Chinese University of Hong Kong",
-        date: "December 2025",
-      },
-      {
-        venue: "CWI",
-        date: "January 2026",
-      },
-    ],
   },
 ];
 
@@ -81,6 +71,21 @@ const otherManuscripts = [
         href: "https://dataspace.princeton.edu/handle/88435/dsp01kw52jc347",
       },
     ],
+  },
+];
+
+const talks = [
+  {
+    title:
+      "How to Prove Post-Quantum Security for Succinct Non-Interactive Reductions",
+    venue: "Chinese University of Hong Kong",
+    date: "December 2025",
+  },
+  {
+    title:
+      "How to Prove Post-Quantum Security for Succinct Non-Interactive Reductions",
+    venue: "CWI",
+    date: "January 2026",
   },
 ];
 
@@ -142,6 +147,7 @@ function Header() {
         <a href="#about">About</a>
         <a href="#publications">Publications</a>
         <a href="#other-manuscripts">Other manuscripts</a>
+        <a href="#talks">Talks</a>
         <a href="#teaching">Teaching</a>
         <a href="#service">Service</a>
         <a href="#misc">Miscellaneous</a>
@@ -179,17 +185,6 @@ function Publication({ paper }) {
       <h3>{paper.title}</h3>
       {paper.venue && <p className="venue">{paper.venue}</p>}
       <p className="authors">{paper.authors}</p>
-      {paper.talks && (
-        <p className="talks">
-          Talks:{" "}
-          {paper.talks.map((talk, index) => (
-            <React.Fragment key={`${talk.venue}-${talk.date}`}>
-              {index > 0 && "; "}
-              {talk.venue}, {talk.date}
-            </React.Fragment>
-          ))}
-        </p>
-      )}
 
       <div className="paper-links">
         {paper.links.map((link) => (
@@ -204,6 +199,18 @@ function Publication({ paper }) {
 
       {open && <p className="abstract">{paper.abstract}</p>}
     </article>
+  );
+}
+
+function Talk({ talk }) {
+  return (
+    <li>
+      <span className="item-title">{talk.title}</span>
+      <br />
+      <span className="muted">{talk.venue}</span>
+      <br />
+      <span className="muted">{talk.date}</span>
+    </li>
   );
 }
 
@@ -290,6 +297,15 @@ export default function App() {
               <Publication key={paper.title} paper={paper} />
             ))}
           </div>
+        </section>
+
+        <section id="talks" className="section">
+          <h2>Talks</h2>
+          <ul>
+            {talks.map((talk) => (
+              <Talk key={`${talk.title}-${talk.date}`} talk={talk} />
+            ))}
+          </ul>
         </section>
 
         <section id="teaching" className="section">
@@ -505,11 +521,6 @@ h3 {
 }
 
 .authors {
-  margin-bottom: 6px;
-  color: var(--muted);
-}
-
-.talks {
   margin-bottom: 6px;
   color: var(--muted);
 }
