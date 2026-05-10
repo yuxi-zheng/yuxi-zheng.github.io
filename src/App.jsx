@@ -113,6 +113,13 @@ const teaching = [
   },
 ];
 
+const service = [
+  {
+    role: "External Reviewer",
+    venues: "TQC 2026, FOCS 2025, Eurocrypt 2024, Journal of the ACM 2024",
+  },
+];
+
 /* Put your photos inside public/photos/ with these exact names. */
 const siteBase = import.meta.env.BASE_URL;
 
@@ -136,6 +143,7 @@ function Header() {
         <a href="#publications">Publications</a>
         <a href="#other-manuscripts">Other manuscripts</a>
         <a href="#teaching">Teaching</a>
+        <a href="#service">Service</a>
         <a href="#misc">Miscellaneous</a>
       </nav>
     </header>
@@ -292,6 +300,18 @@ export default function App() {
                 key={`${item.course}-${item.institution}-${item.terms}`}
                 item={item}
               />
+            ))}
+          </ul>
+        </section>
+
+        <section id="service" className="section">
+          <h2>Service</h2>
+          <ul>
+            {service.map((item) => (
+              <li key={item.role}>
+                <span className="item-title">{item.role}</span>:{" "}
+                <span className="muted">{item.venues}</span>
+              </li>
             ))}
           </ul>
         </section>
