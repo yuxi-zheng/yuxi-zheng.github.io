@@ -577,6 +577,10 @@ h3 {
   color: var(--muted);
 }
 
+.authors a {
+  color: inherit;
+}
+
 .paper-links {
   display: flex;
   flex-wrap: wrap;
