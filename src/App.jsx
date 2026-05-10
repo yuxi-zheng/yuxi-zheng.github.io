@@ -13,9 +13,14 @@ const profile = {
 
 const links = [{ label: "Google Scholar", href: profile.scholarUrl }];
 
+const skatingLinks = {
+  pufsc: "https://figureskatingclub.campusrec.princeton.edu/",
+  lausanneIceGenesis: "https://www.lausanneicegenesis.com/",
+};
+
 const researchInterests = [
   "theoretical computer science",
-  "post-quantum cryptography",
+  "post-quantum and quantum cryptography",
   "proof systems",
 ];
 
@@ -275,7 +280,23 @@ export default function App() {
 
         <section id="misc" className="section">
           <h2>Miscellaneous</h2>
-          <p>I like figure skating, drawing, gardening, and playing piano.  </p>
+          <p>
+            In my free time, I like to do figure skating and was previously a member of the
+            synchro team at{" "}
+            <a href={skatingLinks.pufsc} target="_blank" rel="noreferrer">
+              PUFSC
+            </a>{" "}
+            and{" "}
+            <a
+              href={skatingLinks.lausanneIceGenesis}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Lausanne Ice Genesis
+            </a>
+            . Other than that, I enjoy drawing, playing the piano, hiking, skating on natural lakes and
+            gardening.
+          </p>
         </section>
 
         <footer>
