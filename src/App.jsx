@@ -29,8 +29,12 @@ const publications = [
     title: "Quantum Advantage in Proof Systems without Entanglement",
     venue:
       "ICALP 2026",
-    authors: "Details to be added.",
-    abstract: "Abstract to be added.",
+    authors: "Krishna Agaram, Nick Spooner, Yuxi Zheng",
+    abstract: `The study of interactive proofs in the quantum setting has yielded profound insights in complexity theory and quantum information. A curious feature of these results is that the advantage, in terms of computational power, of quantum models over their classical counterparts is usually due to entanglement phenomena rather than quantum communication with the verifier. For example, it is known that QIP = IP = PSPACE, and QMIP with unentangled provers is equal to NEXP = MIP; on the other hand, MIP* = RE.
+
+    In this work we initiate the general study of (quantum) \\emph{positional} multi-prover interactive proofs ((Q)PMIP), in which provers and verifiers positioned in space communicate freely save for the constraints imposed by the speed of light. We investigate how the class of languages decidable by (Q)PMIPs depends on the arrangement of the verifiers and (honest) provers. In the case of classical PMIPs, we show a dichotomy: if the arrangement satisfies what we call the \`\`min-ball'' condition, then the class is NEXP, otherwise it is PSPACE. We then exhibit an arrangement that \\emph{does not} satisfy the min-ball condition for which there is a \\emph{quantum} PMIP for EXP in the no pre-shared entanglement model.
+
+    Our construction is based on positional cryptography and MIPs with no-signaling soundness. We introduce a new positional primitive, the positional hardcore bit, which allows a pair of spatially separated players to transmit a random bit to a particular location while guaranteeing that it remains strongly unguessable elsewhere.`,
     links: [],
   },
   {
@@ -42,17 +46,30 @@ const publications = [
       "Hash-based succinct non-interactive arguments are widely used because they are efficient, easy to deploy, and believed to have post-quantum security. This work studies hash-based succinct non-interactive reductions and proves security in the quantum random oracle model under a natural post-quantum analogue of state-restoration security. It also develops a modular framework for proving security of the extended BCS transformation via quantum extraction properties for vector commitments.",
     links: [{ label: "ePrint", href: "https://eprint.iacr.org/2025/2166" }],
   },
+];
+
+const otherManuscripts = [
   {
     title:
       "Multivariate Polynomial Regression of Euclidean Degree Extends the Stability for Fast Approximations of Trefethen Functions",
-    venue: "arXiv preprint arXiv:2212.11706, 2022",
+    venue: "",
     authors:
       "Sachin K. Thekke Veettil, Yuxi Zheng, Uwe Hernandez Acosta, Damar Wicaksono, Michael Hecht",
     abstract:
       "This work studies multivariate polynomial regression through general polynomial lp-degree notions, including total, Euclidean, and maximum degree. It shows that choosing Euclidean degree gives improved resistance to instability in fast function approximation, especially for a class of analytic functions called Trefethen functions, and complements the regression scheme with adaptive domain decomposition.",
+    links: [{ label: "arXiv", href: "https://arxiv.org/abs/2212.11706" }],
+  },
+  {
+    title: "Lattice-Based Knowledge Assumption and IND-CCA1 Scheme",
+    venue: "Princeton University senior thesis, 2023",
+    authors: "Yuxi Zheng",
+    abstract:
+      "This thesis introduces a lattice-based encryption scheme, Dual LWE ElGamal ($\\mathcal{DLEG}$) that is IND-CCA1 secure and is relatively simple to construct. The scheme is an analog to Damgaard's ElGamal encryption scheme, which is also IND-CCA1 secure. The scheme is constructed using lattice trapdoors and its security relies on a lattice analog of the Knowledge of Exponent Assumption, called the Knowledge of LWE Secret Assumption (LWEK). This thesis motivates the construction of $\\mathcal{DLEG}$ scheme and gives a proof of security. We also show that LWEK is a member of Subset Witness Assumptions (SWK) and discuss some possible future work.",
     links: [
-      { label: "arXiv", href: "https://arxiv.org/abs/2212.11706" },
-      { label: "doi", href: "https://doi.org/10.48550/arXiv.2212.11706" },
+      {
+        label: "DataSpace",
+        href: "https://dataspace.princeton.edu/handle/88435/dsp01kw52jc347",
+      },
     ],
   },
 ];
@@ -118,6 +135,7 @@ function Header() {
       <nav>
         <a href="#about">About</a>
         <a href="#publications">Publications</a>
+        <a href="#other-manuscripts">Other manuscripts</a>
         <a href="#talks">Talks</a>
         <a href="#teaching">Teaching</a>
         <a href="#misc">Miscellaneous</a>
@@ -153,7 +171,7 @@ function Publication({ paper }) {
   return (
     <article className="publication">
       <h3>{paper.title}</h3>
-      <p className="venue">{paper.venue}</p>
+      {paper.venue && <p className="venue">{paper.venue}</p>}
       <p className="authors">{paper.authors}</p>
 
       <div className="paper-links">
@@ -229,7 +247,7 @@ export default function App() {
                 Prof. Alessandro Chiesa
               </a>
               . I received my B.S. in Mathematics from Princeton University in
-              2023 and minored in Computer Science.
+              2023 and minored in Computer Science and German Literature.
             </p>
 
             <p>
@@ -260,6 +278,15 @@ export default function App() {
           </div>
         </section>
 
+        <section id="other-manuscripts" className="section">
+          <h2>Other manuscripts</h2>
+          <div className="publication-list">
+            {otherManuscripts.map((paper) => (
+              <Publication key={paper.title} paper={paper} />
+            ))}
+          </div>
+        </section>
+
         <section id="talks" className="section">
           <h2>Talks</h2>
           <ul>
@@ -273,7 +300,10 @@ export default function App() {
           <h2>Teaching</h2>
           <ul>
             {teaching.map((item) => (
-              <TeachingItem key={`${item.course}-${item.terms}`} item={item} />
+              <TeachingItem
+                key={`${item.course}-${item.institution}-${item.terms}`}
+                item={item}
+              />
             ))}
           </ul>
         </section>
