@@ -21,9 +21,9 @@ const researchInterests = [
 
 const publications = [
   {
-    title: "PMIP",
+    title: "Quantum Advantage in Proof Systems without Entanglement",
     venue:
-      "International Colloquium on Automata, Languages, and Programming (ICALP), 2026",
+      "ICALP 2026",
     authors: "Details to be added.",
     abstract: "Abstract to be added.",
     links: [],
@@ -31,7 +31,7 @@ const publications = [
   {
     title:
       "How to Prove Post-Quantum Security for Succinct Non-Interactive Reductions",
-    venue: "IACR Cryptology ePrint Archive, 2025",
+    venue: "Eurocrypt 2026",
     authors: "Alessandro Chiesa, Zijing Di, Zihan Hu, Yuxi Zheng",
     abstract:
       "Hash-based succinct non-interactive arguments are widely used because they are efficient, easy to deploy, and believed to have post-quantum security. This work studies hash-based succinct non-interactive reductions and proves security in the quantum random oracle model under a natural post-quantum analogue of state-restoration security. It also develops a modular framework for proving security of the extended BCS transformation via quantum extraction properties for vector commitments.",
@@ -70,16 +70,26 @@ const talks = [
 const teaching = [
   {
     course: "MATH-489 Number Theory II.c — Cryptography",
-    instructor: "Dimitar Jetchev",
+    // instructor: "Dimitar Jetchev",
     institution: "EPFL",
     terms: "Spring 2024, Spring 2025",
   },
   {
     course: "COM-402 Information Security and Privacy",
-    instructor: "Mathias Josef Payer",
+    // instructor: "Mathias Josef Payer",
     institution: "EPFL",
     terms: "Fall 2024, Fall 2025",
   },
+  {
+    course: "MAT473 Cryptography",
+  institution: "Princeton",
+  terms: "Fall 2024, Fall 2025",
+},
+  {
+  course: "COM-402 Information Security and Privacy",
+  institution: "Princeton",
+  terms: "Fall 2024, Fall 2025",
+},
 ];
 
 /* Put your photos inside public/photos/ with these exact names. */
