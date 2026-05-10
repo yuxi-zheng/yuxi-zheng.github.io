@@ -44,7 +44,7 @@ const publications = [
     authors: "Alessandro Chiesa, Zijing Di, Zihan Hu, Yuxi Zheng",
     abstract:
       "Hash-based succinct non-interactive arguments are widely used because they are efficient, easy to deploy, and believed to have post-quantum security. This work studies hash-based succinct non-interactive reductions and proves security in the quantum random oracle model under a natural post-quantum analogue of state-restoration security. It also develops a modular framework for proving security of the extended BCS transformation via quantum extraction properties for vector commitments.",
-    links: [{ label: "ePrint", href: "https://eprint.iacr.org/2025/2166" }],
+    links: [{ label: "arXiv", href: "https://eprint.iacr.org/2025/2166" }],
   },
 ];
 
@@ -91,13 +91,13 @@ const talks = [
 
 const teaching = [
   {
-    course: "MATH-489 Number Theory II.c — Cryptography",
+    course: "MATH489 Number Theory II.c — Cryptography",
     // instructor: "Dimitar Jetchev",
     institution: "EPFL",
     terms: "Spring 2024, Spring 2025",
   },
   {
-    course: "COM-402 Information Security and Privacy",
+    course: "COM402 Information Security and Privacy",
     // instructor: "Mathias Josef Payer",
     institution: "EPFL",
     terms: "Fall 2024, Fall 2025",
@@ -105,12 +105,12 @@ const teaching = [
   {
     course: "MAT473 Cryptography",
   institution: "Princeton",
-  terms: "Fall 2024, Fall 2025",
+  terms: "Spring 2023",
 },
   {
-  course: "COM-402 Information Security and Privacy",
+  course: "COS126 Computer Science An Interdisciplinary Approach",
   institution: "Princeton",
-  terms: "Fall 2024, Fall 2025",
+  terms: "Spring 2020, Fall 2021, Spring 2021",
 },
 ];
 
@@ -208,8 +208,7 @@ function TeachingItem({ item }) {
       <span className="item-title">{item.course}</span>
       <br />
       <span className="muted">
-        Teaching Assistant, {item.institution}; instructor: {item.instructor};{" "}
-        {item.terms}
+        Teaching Assistant, {item.institution}; {item.terms}
       </span>
     </li>
   );
