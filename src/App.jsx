@@ -78,14 +78,16 @@ const talks = [
   {
     title:
       "How to Prove Post-Quantum Security for Succinct Non-Interactive Reductions",
-    venue: "Chinese University of Hong Kong",
-    date: "December 2025",
-  },
-  {
-    title:
-      "How to Prove Post-Quantum Security for Succinct Non-Interactive Reductions",
-    venue: "CWI",
-    date: "January 2026",
+    appearances: [
+      {
+        venue: "Chinese University of Hong Kong",
+        date: "December 2025",
+      },
+      {
+        venue: "CWI",
+        date: "January 2026",
+      },
+    ],
   },
 ];
 
@@ -138,6 +140,8 @@ const photoList = [
   `${siteBase}photos/yuxi7.jpg`,
   `${siteBase}photos/yuxi8.jpg`,
   `${siteBase}photos/yuxi9.jpg`,
+  `${siteBase}photos/yuxi10.jpg`,
+  `${siteBase}photos/yuxi11.jpg`,
 ];
 
 function Header() {
@@ -206,10 +210,14 @@ function Talk({ talk }) {
   return (
     <li>
       <span className="item-title">{talk.title}</span>
-      <br />
-      <span className="muted">{talk.venue}</span>
-      <br />
-      <span className="muted">{talk.date}</span>
+      {talk.appearances.map((appearance) => (
+        <React.Fragment key={`${appearance.venue}-${appearance.date}`}>
+          <br />
+          <span className="muted">
+            {appearance.venue}, {appearance.date}
+          </span>
+        </React.Fragment>
+      ))}
     </li>
   );
 }
@@ -303,7 +311,7 @@ export default function App() {
           <h2>Talks</h2>
           <ul>
             {talks.map((talk) => (
-              <Talk key={`${talk.title}-${talk.date}`} talk={talk} />
+              <Talk key={talk.title} talk={talk} />
             ))}
           </ul>
         </section>
