@@ -13,6 +13,18 @@ const profile = {
 
 const links = [{ label: "Google Scholar", href: profile.scholarUrl }];
 
+const authorLinks = {
+  "Krishna Agaram": "https://mathismusic.github.io/website2024/about/",
+  "Nick Spooner": "https://spooner.cc/",
+  "Alessandro Chiesa": "https://ic-people.epfl.ch/~achiesa/",
+  "Zijing Di": "https://dizidizidi.github.io/",
+  "Zihan Hu": "https://zihanhu.cn/",
+  "Sachin K. Thekke Veettil": "https://orcid.org/0000-0003-4852-2839",
+  "Uwe Hernandez Acosta": "https://orcid.org/0000-0002-6182-1481",
+  "Damar Wicaksono": "https://orcid.org/0000-0001-8587-7730",
+  "Michael Hecht": "https://www.casus.science/?page_id=4528",
+};
+
 const skatingLinks = {
   pufsc: "https://figureskatingclub.campusrec.princeton.edu/",
   lausanneIceGenesis: "https://www.lausanneicegenesis.com/",
@@ -181,6 +193,29 @@ function Portrait({ src, fallbackSrc }) {
   );
 }
 
+function Authors({ authors }) {
+  const names = authors.split(", ");
+
+  return names.map((name, index) => {
+    const href = authorLinks[name];
+    const separator = index < names.length - 1 ? ", " : "";
+    const author = href ? (
+      <a href={href} target="_blank" rel="noreferrer">
+        {name}
+      </a>
+    ) : (
+      name
+    );
+
+    return (
+      <React.Fragment key={name}>
+        {author}
+        {separator}
+      </React.Fragment>
+    );
+  });
+}
+
 function Publication({ paper }) {
   const [open, setOpen] = useState(false);
 
@@ -188,7 +223,9 @@ function Publication({ paper }) {
     <article className="publication">
       <h3>{paper.title}</h3>
       {paper.venue && <p className="venue">{paper.venue}</p>}
-      <p className="authors">{paper.authors}</p>
+      <p className="authors">
+        <Authors authors={paper.authors} />
+      </p>
 
       <div className="paper-links">
         {paper.links.map((link) => (
@@ -256,10 +293,6 @@ export default function App() {
               {profile.name} <span className="chinese-name">{profile.chineseName}</span>
             </h1>
 
-            <p className="subtitle">
-              {profile.subtitle}, {profile.affiliation}
-            </p>
-
             <p>
               I am a third-year Ph.D. student at EPFL in the COMSEC lab, advised
               by{" "}
@@ -276,7 +309,7 @@ export default function App() {
             </p>
 
             <p className="contact">
-              Email: <a href={`mailto:${profile.email}`}>{profile.email}</a>
+              <a href={`mailto:${profile.email}`}>{profile.email}</a>
               {links.map((link) => (
                 <span key={link.label}>
                   <span className="dot"> · </span>
@@ -470,14 +503,15 @@ p {
 
 h1 {
   margin-bottom: 10px;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Arial, sans-serif;
   font-size: 2.45rem;
-  line-height: 1.12;
-  font-weight: 500;
+  line-height: 1.08;
+  font-weight: 600;
 }
 
 .chinese-name {
   color: var(--muted);
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   font-size: 1.55rem;
   font-weight: 400;
   white-space: nowrap;
