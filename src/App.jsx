@@ -84,7 +84,7 @@ const talks = [
   {
     title:
       "How to Prove Post-Quantum Security for Succinct Non-Interactive Reductions",
-    venue: "Amsterdam, institution to be added",
+    venue: "CWI",
     date: "January 2026",
   },
 ];
@@ -104,14 +104,15 @@ const teaching = [
   },
   {
     course: "MAT473 Cryptography",
-  institution: "Princeton",
-  terms: "Spring 2023",
-},
+    institution: "Princeton",
+    terms: "Spring 2023",
+  },
   {
-  course: "COS126 Computer Science An Interdisciplinary Approach",
-  institution: "Princeton",
-  terms: "Spring 2020, Fall 2021, Spring 2021",
-},
+    course: "COS126 Computer Science An Interdisciplinary Approach",
+    role: "Lab TA and grader",
+    institution: "Princeton",
+    terms: "Spring 2020, Fall 2021, Spring 2021",
+  },
 ];
 
 /* Put your photos inside public/photos/ with these exact names. */
@@ -208,7 +209,8 @@ function TeachingItem({ item }) {
       <span className="item-title">{item.course}</span>
       <br />
       <span className="muted">
-        Teaching Assistant, {item.institution}; {item.terms}
+        {item.role && `${item.role}, `}
+        {item.institution}; {item.terms}
       </span>
     </li>
   );
