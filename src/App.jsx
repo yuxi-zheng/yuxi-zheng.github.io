@@ -23,6 +23,8 @@ const authorLinks = {
   "Uwe Hernandez Acosta": "https://orcid.org/0000-0002-6182-1481",
   "Damar Wicaksono": "https://orcid.org/0000-0001-8587-7730",
   "Michael Hecht": "https://www.casus.science/?page_id=4528",
+  "Dennis Hofheinz": "https://people.inf.ethz.ch/dhofheinz/",
+  "Mark McConnell": "https://www.bluzeandmuse.com/mark/",
 };
 
 const skatingLinks = {
@@ -74,7 +76,7 @@ const otherManuscripts = [
   {
     title: "Lattice-Based Knowledge Assumption and IND-CCA1 Scheme",
     venue: "Princeton University senior thesis, 2023",
-    authors: "Yuxi Zheng",
+    authors: "Supervised by Dennis Hofheinz, Mark McConnell",
     abstract:
       "This thesis introduces a lattice-based encryption scheme, Dual LWE ElGamal ($\\mathcal{DLEG}$) that is IND-CCA1 secure and is relatively simple to construct. The scheme is an analog to Damgaard's ElGamal encryption scheme, which is also IND-CCA1 secure. The scheme is constructed using lattice trapdoors and its security relies on a lattice analog of the Knowledge of Exponent Assumption, called the Knowledge of LWE Secret Assumption (LWEK). This thesis motivates the construction of $\\mathcal{DLEG}$ scheme and gives a proof of security. We also show that LWEK is a member of Subset Witness Assumptions (SWK) and discuss some possible future work.",
     links: [
@@ -96,7 +98,7 @@ const talks = [
         date: "December 2025",
       },
       {
-        venue: "CWI",
+        venue: "CWI Cryptology Group",
         date: "January 2026",
       },
     ],
@@ -194,8 +196,19 @@ function Portrait({ src, fallbackSrc }) {
 }
 
 function Authors({ authors }) {
-  const names = authors.split(", ");
+  if (authors.startsWith("Supervised by ")) {
+    return (
+      <>
+        Supervised by{" "}
+        <AuthorList names={authors.replace("Supervised by ", "").split(", ")} />
+      </>
+    );
+  }
 
+  return <AuthorList names={authors.split(", ")} />;
+}
+
+function AuthorList({ names }) {
   return names.map((name, index) => {
     const href = authorLinks[name];
     const separator = index < names.length - 1 ? ", " : "";
@@ -297,7 +310,7 @@ export default function App() {
               I am a third-year Ph.D. student at EPFL in the COMSEC lab, advised
               by{" "}
               <a href={profile.advisorUrl} target="_blank" rel="noreferrer">
-                Prof. Alessandro Chiesa
+                Alessandro Chiesa
               </a>
               . I received my B.S. in Mathematics from Princeton University in
               2023 and minored in Computer Science and German Literature.
