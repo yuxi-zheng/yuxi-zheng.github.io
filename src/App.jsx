@@ -88,6 +88,35 @@ const otherManuscripts = [
   },
 ];
 
+const projects = [
+  {
+    title: "Formally Verified PCP Constructions",
+    venue: "Lean formalization project",
+    authors:
+      "Serhat Emre Coban, Davide Mazzali, Khanh Nguyen, Vincent Palma, Yanting Teng, Thomas Vidick, Yuxi Zheng",
+    abstract:
+      "A Lean project formalizing ingredients for PCP constructions, including BLR linearity tests over finite fields, a Gowers-Hatami route to BLR soundness, and an exponential-length PCP.",
+    links: [
+      {
+        label: "Website",
+        href: "https://yuxi-zheng.github.io/blr-pcp-formal-verification/",
+      },
+      {
+        label: "Blueprint",
+        href: "https://yuxi-zheng.github.io/blr-pcp-formal-verification/blueprint/",
+      },
+      {
+        label: "Docs",
+        href: "https://yuxi-zheng.github.io/blr-pcp-formal-verification/docs/",
+      },
+      {
+        label: "GitHub",
+        href: "https://github.com/yuxi-zheng/blr-pcp-formal-verification",
+      },
+    ],
+  },
+];
+
 const talks = [
   {
     title:
@@ -164,6 +193,7 @@ function Header() {
       <nav>
         <a href="#about">About</a>
         <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
         <a href="#other-manuscripts">Other manuscripts</a>
         <a href="#talks">Talks</a>
         <a href="#teaching">Teaching</a>
@@ -340,6 +370,15 @@ export default function App() {
           <div className="publication-list">
             {publications.map((paper) => (
               <Publication key={paper.title} paper={paper} />
+            ))}
+          </div>
+        </section>
+
+        <section id="projects" className="section">
+          <h2>Projects</h2>
+          <div className="publication-list">
+            {projects.map((project) => (
+              <Publication key={project.title} paper={project} />
             ))}
           </div>
         </section>
