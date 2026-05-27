@@ -6,7 +6,7 @@ const profile = {
   subtitle: "Ph.D. Student in Theoretical Computer Science",
   affiliation: "EPFL",
   location: "Lausanne, Switzerland",
-  email: "yuxi.zheng@epfl.ch",
+  emailParts: ["yuxi.zheng", "epfl.ch"],
   scholarUrl: "https://scholar.google.com/citations?user=fxooVZMAAAAJ&hl=en",
   advisorUrl: "https://ic-people.epfl.ch/~achiesa/",
 };
@@ -24,8 +24,8 @@ const authorLinks = {
   "Mark McConnell": "https://www.bluzeandmuse.com/mark/",
   "Serhat Emre Coban": "https://people.epfl.ch/serhat.coban",
   "Davide Mazzali": "https://davidemazzali.github.io/",
-  "Khanh Nguyen": "https://khanhcrypto.github.io/",
-  "Vincent Palma": "https://palma.dev/",
+  "Khanh Nguyen": "https://people.epfl.ch/khanh.nguyen",
+  "Vincent Palma": "https://people.epfl.ch/vincent.palma",
   "Yanting Teng": "https://people.epfl.ch/yanting.teng",
   "Thomas Vidick": "https://www.weizmann.ac.il/math/vidick/home",
 };
@@ -313,6 +313,25 @@ function TeachingItem({ item }) {
   );
 }
 
+function EmailReveal({ parts }) {
+  const [revealed, setRevealed] = useState(false);
+  const email = `${parts[0]}@${parts[1]}`;
+
+  if (revealed) {
+    return <a href={`mailto:${email}`}>{email}</a>;
+  }
+
+  return (
+    <button
+      type="button"
+      className="text-button"
+      onClick={() => setRevealed(true)}
+    >
+      show email
+    </button>
+  );
+}
+
 export default function App() {
   const selectedPhoto = useMemo(() => {
     const index = Math.floor(Math.random() * photoList.length);
@@ -350,7 +369,7 @@ export default function App() {
             </p>
 
             <p className="contact">
-              <a href={`mailto:${profile.email}`}>{profile.email}</a>
+              <EmailReveal parts={profile.emailParts} />
               {links.map((link) => (
                 <span key={link.label}>
                   <span className="dot"> · </span>
@@ -485,6 +504,19 @@ a {
 }
 
 a:hover {
+  text-decoration: underline;
+}
+
+.text-button {
+  border: none;
+  background: none;
+  color: var(--link);
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.text-button:hover {
   text-decoration: underline;
 }
 
