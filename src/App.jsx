@@ -22,6 +22,12 @@ const authorLinks = {
   "Michael Hecht": "https://www.casus.science/?page_id=4528",
   "Dennis Hofheinz": "https://people.inf.ethz.ch/dhofheinz/",
   "Mark McConnell": "https://www.bluzeandmuse.com/mark/",
+  "Serhat Emre Coban": "https://people.epfl.ch/serhat.coban",
+  "Davide Mazzali": "https://davidemazzali.github.io/",
+  "Khanh Nguyen": "https://khanhcrypto.github.io/",
+  "Vincent Palma": "https://palma.dev/",
+  "Yanting Teng": "https://people.epfl.ch/yanting.teng",
+  "Thomas Vidick": "https://www.weizmann.ac.il/math/vidick/home",
 };
 
 const skatingLinks = {
