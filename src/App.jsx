@@ -354,8 +354,15 @@ export default function App() {
             </h1>
 
             <p>
-              I am a third-year Ph.D. student at EPFL in the COMSEC lab, advised
-              by{" "}
+              I am a third-year Ph.D. student at EPFL in the
+              <a
+                href="https://compsec.epfl.ch/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                COMPSEC lab
+              </a>
+              , advised by{" "}
               <a href={profile.advisorUrl} target="_blank" rel="noreferrer">
                 Alessandro Chiesa
               </a>
