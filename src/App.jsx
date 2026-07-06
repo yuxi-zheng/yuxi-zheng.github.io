@@ -354,7 +354,7 @@ export default function App() {
             </h1>
 
             <p>
-              I am a third-year Ph.D. student at EPFL in the
+              I am a third-year Ph.D. student at EPFL in the 
               <a
                 href="https://compsec.epfl.ch/"
                 target="_blank"
