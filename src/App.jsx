@@ -97,7 +97,7 @@ const otherManuscripts = [
 const projects = [
   {
     title: "Formally Verified PCP Constructions",
-    venue: "Lean formalization project (ongoing)",
+    venue: "Lean formalization project",
     authors:
       "Serhat Emre Coban, Davide Mazzali, Khanh Nguyen, Vincent Palma, Yanting Teng, Thomas Vidick, Yuxi Zheng",
     abstract:
@@ -117,16 +117,30 @@ const projects = [
 
 const talks = [
   {
+    title: "Quantum Advantage in Proof Systems without Entanglement",
+    appearances: [
+      {
+        venue: "University of London",
+        event: "ICALP 2026",
+        date: "July 8, 2026",
+      },
+      {
+        venue: "University of Cambridge",
+        date: "July 15, 2026",
+      },
+    ],
+  },
+  {
     title:
       "How to Prove Post-Quantum Security for Succinct Non-Interactive Reductions",
     appearances: [
       {
         venue: "Chinese University of Hong Kong",
-        date: "December 2025",
+        date: "December 2, 2025",
       },
       {
         venue: "CWI Cryptology Group",
-        date: "January 2026",
+        date: "January 21, 2026",
       },
     ],
   },
@@ -292,7 +306,8 @@ function Talk({ talk }) {
         <React.Fragment key={`${appearance.venue}-${appearance.date}`}>
           <br />
           <span className="muted">
-            {appearance.venue}, {appearance.date}
+            {appearance.venue}
+            {appearance.event && ` · ${appearance.event}`} · {appearance.date}
           </span>
         </React.Fragment>
       ))}
@@ -354,7 +369,7 @@ export default function App() {
             </h1>
 
             <p>
-              I am a third-year Ph.D. student at EPFL in the 
+              I am a third-year Ph.D. student at EPFL in the{" "}
               <a
                 href="https://compsec.epfl.ch/"
                 target="_blank"
